@@ -47,12 +47,13 @@ class HomeController extends Controller
             'email' => 'required|email:dns',
             'role_id' => 'required|in:Admin,User',
             'password' => 'required|min:8',
+            'display_picture_link' => 'required'
         ]);
         
 
         if($request->hasFile('image')){
             $request->validate([
-                'image' => 'image|file'
+                'display_picture_link' => 'required|image|file'
             ]);
         }
         
@@ -77,9 +78,9 @@ class HomeController extends Controller
 
         User::create($validated_data);
 
-        if($request->file('image')){
+        if($request->file('display_picture_link')){
             $last_index = User::orderBy('account_id', 'desc')->first();
-            $last_index['display_picture_link'] = 'storage/' . $request->file('image')->store('images/product');
+            $last_index['display_picture_link'] = 'storage/' . $request->file('display_picture_link')->store('images/profile-pic');
         }
         
         $last_index->save();

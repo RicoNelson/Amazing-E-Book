@@ -35,12 +35,12 @@
                     </div>
                     
                     <div class="form-check">
-                        <label class="form-check-label" for="gender">Female</label>
-                        <input class="form-check-input" type="radio" name="gender" id="gender" value="female">
+                        <label class="form-check-label" for="gender_id">Female</label>
+                        <input class="form-check-input" type="radio" name="gender_id" id="gender_id" value="female">
                     </div>
                 </div>
 
-                @error('gender')
+                @error('gender_id')
                     <div class="invalid-feedback d-block text-start">
                         {{ $message }}
                     </div>

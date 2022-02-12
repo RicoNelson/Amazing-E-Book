@@ -2,15 +2,20 @@
 
 @section('body')
 
+<div class="container text-center mb-3">
+    @php
+        // dd(auth()->user()->gender)
+    @endphp
+    @if(auth()->user()->display_picture_link === null)
+        <img src="{{ URL::asset('images/profile-pic/no-image.jpg') }}" alt="" height="300px">
+    @else
+        <img src="{{ URL::asset(auth()->user()->display_picture_link) }}" alt="" height="300px">
+    @endif
+</div>
+
 <form action="/update-profile" method="POST" enctype="multipart/form-data">
     @csrf
-    <div class="container text-center">
-        @if(auth()->user()->display_picture_link === null)
-            <img src="{{ URL::asset('images/profile-pic/no-image.jpg') }}" alt="">
-        @else
-            <img src="{{ URL::asset(auth()->user()->display_picture_link) }}" alt="">
-        @endif
-    </div>
+    
     <div class="row mb-3">
         <div class="col">
             <div class="mb-3">
@@ -38,7 +43,7 @@
                 <div class="d-flex">
                     <div class="form-check me-3">
                         <label class="form-check-label" for="gender_id">Male</label>
-                        @if(auth()->user()->gender === 1)
+                        @if(auth()->user()->gender_id === 1)
                             <input class="form-check-input" type="radio" name="gender_id" id="gender_id" value="male" checked>
                         @else
                             <input class="form-check-input" type="radio" name="gender_id" id="gender_id" value="male">
@@ -46,16 +51,16 @@
                     </div>
                     
                     <div class="form-check">
-                        <label class="form-check-label" for="gender">Female</label>
-                        @if(auth()->user()->gender === 2)
-                            <input class="form-check-input" type="radio" name="gender" id="gender" value="female" checked>
+                        <label class="form-check-label" for="gender_id">Female</label>
+                        @if(auth()->user()->gender_id === 2)
+                            <input class="form-check-input" type="radio" name="gender_id" id="gender_id" value="female" checked>
                         @else
-                            <input class="form-check-input" type="radio" name="gender" id="gender" value="female">
+                            <input class="form-check-input" type="radio" name="gender_id" id="gender_id" value="female">
                         @endif
                     </div>
                 </div>
 
-                @error('gender')
+                @error('gender_id')
                     <div class="invalid-feedback d-block text-start">
                         {{ $message }}
                     </div>
@@ -71,8 +76,11 @@
         <div class="col">
             <div class="mb-3">
                 <label for="middle_name" class="form-label">Middle Name</label>
-                <input type="text" name="middle_name" class="form-control rounded-top @error('middle_name') is-invalid @enderror" id="last-name" value="{{ old('middle_name') }}">
-
+                @if(auth()->user()->middle_name === null)
+                    <input type="text" name="middle_name" class="form-control rounded-top @error('middle_name') is-invalid @enderror" id="last-name" value="">
+                @else
+                    <input type="text" name="middle_name" class="form-control rounded-top @error('middle_name') is-invalid @enderror" id="last-name" value="{{ auth()->user()->middle_name }}">
+                @endif
                 @error('middle_name')
                     <div class="invalid-feedback d-block text-start">
                         {{ $message }}
@@ -81,7 +89,7 @@
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>
-                <input type="email" class="form-control @error('email') is-invalid @enderror" aria-describedby="emailHelp" name="email" id="email" placeholder="name@example.com" value="{{ old('email') }}" required >
+                <input type="email" class="form-control @error('email') is-invalid @enderror" aria-describedby="emailHelp" name="email" id="email" placeholder="name@example.com" value="{{ auth()->user()->email }}" required >
                 @error('email')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -90,18 +98,25 @@
             </div>
 
             <div class="mb-3">
-                <label for="role_id" class="form-label">Role</label>
-                <select id="role_id" name="role_id" class="form-control form-select @error('role_id') is-invalid @enderror">
-                    <option selected>Choose Role</option>
-                    <option value="Admin">Admin</option>
-                    <option value="User">User</option>
-                </select>
-    
-                @error('role_id')
-                        <div class="invalid-feedback d-block text-start">
-                            {{ $message }}
-                        </div>
-                @enderror
+                <fieldset disabled>
+                    <label for="disabledSelect" class="form-label">Role</label>
+                    <select id="disabledSelect"  class="form-control form-select @error('role_id') is-invalid @enderror">
+                        @if(auth()->user()->role_id === 1)
+                            <option value="Admin" selected>Admin</option>
+                            <option value="User">User</option>
+                        @else
+                            <option value="Admin">Admin</option>
+                            <option value="User" selected>User</option>
+                        @endif
+                    </select>
+        
+                    @error('role_id')
+                            <div class="invalid-feedback d-block text-start">
+                                {{ $message }}
+                            </div>
+                    @enderror
+                
+                </fieldset>
             </div>
 
             <div class="mb-3">
