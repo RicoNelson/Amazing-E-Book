@@ -30,7 +30,7 @@ class ProfileController extends Controller
         // dd($request->all());
         $validated_data = $request->validate([
             'first_name' => 'required|max:25|alpha_num',
-            'middle_name' => 'max:25|alpha_num',
+            'middle_name' => 'max:25',
             'last_name' => 'required|max:25|alpha_num',
             'gender_id' => 'required',
             'email' => 'required|email:dns',
