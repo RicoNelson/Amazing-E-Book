@@ -14,13 +14,13 @@ Note:<br>
 Account for admin
 - email: admin@admin.com
 - password: password
-
+<br>
 - email: admin2@admin.com
 - password: password
 
 Account for customer
 - email: user@user.com
 - password: password
-
+<br>
 - email: user2@user.com
 - password: password
