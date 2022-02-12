@@ -17,34 +17,54 @@
     <header class="header-page">
         @auth
             <div class="row bg-info py-3">
-                <div class="col"></div>
+                <div class="col text-center">
+                    @foreach ($available_locales as $locale_name => $available_locale)
+                        @if($available_locale === $current_locale)
+                            <p>{{ $locale_name }}</p>
+                        @else
+                            <a class="custom-a-link" href="language/{{ $available_locale }}">
+                                {{ $locale_name }}
+                            </a>
+                        @endif
+                    @endforeach
+                </div>
 
                 <h1 class="text-center col">Amazing E-Book</h1>
                 
                 <div class="col text-center mt-2">
                     <form action="/logout" method="post">
                         @csrf
-                        <button type="submit" class="btn btn-warning">Log out</button>
+                        <button type="submit" class="btn btn-warning">{{__('Log Out')}}</button>
                     </form>
                 </div>
             </div>
             <div class="d-flex justify-content-center bg-warning navbar-home align-items-center">
-                <a href="/" class="me-3 custom-a-link">Home</a>
-                <a href="/cart" class="me-3 custom-a-link">Cart</b>
-                <a href="/profile" class="me-3 custom-a-link">Profile</a>
+                <a href="/" class="me-3 custom-a-link">{{__('Home')}}</a>
+                <a href="/cart" class="me-3 custom-a-link">{{__('Cart')}}</b>
+                <a href="/profile" class="me-3 custom-a-link">{{__('Profile')}}</a>
                 @if (auth()->user()->role_id === 1)
-                    <a href="/acc-maintenance" class="me-3 custom-a-link">Account Maintenance</a>
+                    <a href="/acc-maintenance" class="me-3 custom-a-link">{{__('Account Maintenance')}}</a>
                 @endif
             </div>
         @else
             <div class="row bg-info py-3">
-                <div class="col"></div>
+                <div class="col text-center">
+                    @foreach ($available_locales as $locale_name => $available_locale)
+                        @if($available_locale === $current_locale)
+                            <p>{{ $locale_name }}</p>
+                        @else
+                            <a class="custom-a-link" href="language/{{ $available_locale }}">
+                                {{ $locale_name }}
+                            </a>
+                        @endif
+                    @endforeach
+                </div>
 
                 <h1 class="text-center col">Amazing E-Book</h1>
                 
                 <div class="col text-center mt-2">
-                    <a href="/register"><button type="button" class="btn btn-warning">Sign Up</button></a>
-                    <a href="/login"><button type="button" class="btn btn-warning me-2">Log In</button></a>
+                    <a href="/register"><button type="button" class="btn btn-warning">{{ __('Sign Up') }}</button></a>
+                    <a href="/login"><button type="button" class="btn btn-warning me-2">{{ __('Log In') }}</button></a>
                 </div>
             </div>
         @endauth

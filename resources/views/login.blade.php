@@ -23,10 +23,10 @@
 <div class="container">
     <form action="/login-try" method="post">
         @csrf
-        <h2>Log In</h2>
+        <h2>{{ __('Log In') }}</h2>
 
         <div class="mb-3">
-            <label for="email" class="form-label">Email address</label>
+            <label for="email" class="form-label">{{__('Email Address')}}</label>
             <input type="email" class="form-control @error('email') is-invalid @enderror" aria-describedby="emailHelp" name="email" id="email" placeholder="name@example.com" autofocus required >
             @error('email')
                 <div class="invalid-feedback">
@@ -35,11 +35,11 @@
             @enderror
         </div>
         <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
+            <label for="password" class="form-label">{{__('Password')}}</label>
             <input type="password" class="form-control" id="password" name="password">
         </div>
-        <button type="submit" class="btn btn-primary mb-2">Submit</button>
-        <p>Not Registered? <a href="/register">Register Now!</a></p>
+        <button type="submit" class="btn btn-primary mb-2">{{__('Submit')}}</button>
+        <p>{{__('Not Registered?')}} <a href="/register">{{__('Register Now!')}}</a></p>
     </form>
 </div>
 @endsection

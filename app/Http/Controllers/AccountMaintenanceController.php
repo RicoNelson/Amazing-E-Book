@@ -46,6 +46,8 @@ class AccountMaintenanceController extends Controller
             $account['role_id'] = 2;
         }
 
+        $account->save();
+
         return redirect('/acc-maintenance');
     }
 

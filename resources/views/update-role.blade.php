@@ -12,16 +12,16 @@
             <p>Role: </p>
             <select id="role" name="role_id" class="form-control form-select @error('role_id') is-invalid @enderror">
                 @if($account->role_id === 1)
-                    <option value="Admin" selected>Admin</option>
-                    <option value="User">User</option>
+                    <option value="Admin" selected>{{__('Admin')}}</option>
+                    <option value="User">{{__('User')}}</option>
                 @else
-                    <option value="Admin">Admin</option>
-                    <option value="User" selected>User</option>
+                    <option value="Admin">{{__('Admin')}}</option>
+                    <option value="User" selected>{{__('User')}}</option>
                 @endif
             </select>
 
             <input type="hidden" name="account_id" value="{{ $account->account_id }}">
-            <button class="btn btn-warning mt-3">Save</button>
+            <button class="btn btn-warning mt-3">{{__('Save')}}</button>
         </form>
     </div>
 @endsection

@@ -7,6 +7,7 @@ use App\Models\User;
 use GuzzleHttp\RedirectMiddleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\Password;
 
 class HomeController extends Controller
 {
@@ -46,7 +47,7 @@ class HomeController extends Controller
             'gender_id' => 'required',
             'email' => 'required|email:dns',
             'role_id' => 'required|in:Admin,User',
-            'password' => 'required|min:8',
+            'password' => ['required', Password::min(8)->numbers()],
             'display_picture_link' => 'required'
         ]);
         

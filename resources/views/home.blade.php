@@ -8,8 +8,8 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Author</th>
-                        <th scope="col">Title</th>
+                        <th scope="col">{{__('Author')}}</th>
+                        <th scope="col">{{__('Title')}}</th>
                     </tr>
                 </thead>
                 
@@ -26,7 +26,7 @@
         </div>
     @else
         <div class="container py-4 text-center custom-height">
-            <h2>Find and Rent Your E-Book Here!</h2>
+            <h2>{{ __('Find and Rent Your E-Book Here!') }}</h2>
         </div>
     @endauth
 @endsection

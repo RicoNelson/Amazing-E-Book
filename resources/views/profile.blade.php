@@ -19,7 +19,7 @@
     <div class="row mb-3">
         <div class="col">
             <div class="mb-3">
-                <label for="first_name" class="form-label">First Name</label>
+                <label for="first_name" class="form-label">{{__('First Name')}}</label>
                 <input type="text" name="first_name" class="form-control rounded-top @error('first_name') is-invalid @enderror" id="first_name" value="{{ auth()->user()->first_name }}" autofocus required>
 
                 @error('first_name')
@@ -29,7 +29,7 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="last_name" class="form-label">Last Name</label>
+                <label for="last_name" class="form-label">{{__('Last Name')}}</label>
                 <input type="text" name="last_name" class="form-control rounded-top @error('last_name') is-invalid @enderror" id="last_name" value="{{ auth()->user()->last_name }}" required>
 
                 @error('last_name')
@@ -39,10 +39,10 @@
                 @enderror
             </div>
             <div class="mb-4">
-                <p class="form-label">Gender</p>
+                <p class="form-label">{{__('Gender')}}</p>
                 <div class="d-flex">
                     <div class="form-check me-3">
-                        <label class="form-check-label" for="gender_id">Male</label>
+                        <label class="form-check-label" for="gender_id">{{__('Male')}}</label>
                         @if(auth()->user()->gender_id === 1)
                             <input class="form-check-input" type="radio" name="gender_id" id="gender_id" value="male" checked>
                         @else
@@ -51,7 +51,7 @@
                     </div>
                     
                     <div class="form-check">
-                        <label class="form-check-label" for="gender_id">Female</label>
+                        <label class="form-check-label" for="gender_id">{{__('Female')}}</label>
                         @if(auth()->user()->gender_id === 2)
                             <input class="form-check-input" type="radio" name="gender_id" id="gender_id" value="female" checked>
                         @else
@@ -68,14 +68,14 @@
             </div>
 
             <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
+                <label for="password" class="form-label">{{__('Password')}}</label>
                 <input type="password" class="form-control" id="password" name="password">
             </div>
         </div>
 
         <div class="col">
             <div class="mb-3">
-                <label for="middle_name" class="form-label">Middle Name</label>
+                <label for="middle_name" class="form-label">{{__('Middle Name')}}</label>
                 @if(auth()->user()->middle_name === null)
                     <input type="text" name="middle_name" class="form-control rounded-top @error('middle_name') is-invalid @enderror" id="last-name" value="">
                 @else
@@ -88,7 +88,7 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="email" class="form-label">Email address</label>
+                <label for="email" class="form-label">{{__('Email Address')}}</label>
                 <input type="email" class="form-control @error('email') is-invalid @enderror" aria-describedby="emailHelp" name="email" id="email" placeholder="name@example.com" value="{{ auth()->user()->email }}" required >
                 @error('email')
                     <div class="invalid-feedback">
@@ -99,14 +99,14 @@
 
             <div class="mb-3">
                 <fieldset disabled>
-                    <label for="disabledSelect" class="form-label">Role</label>
+                    <label for="disabledSelect" class="form-label">{{__('Role')}}</label>
                     <select id="disabledSelect"  class="form-control form-select @error('role_id') is-invalid @enderror">
                         @if(auth()->user()->role_id === 1)
-                            <option value="Admin" selected>Admin</option>
-                            <option value="User">User</option>
+                            <option value="Admin" selected>{{__('Admin')}}</option>
+                            <option value="User">{{__('User')}}</option>
                         @else
-                            <option value="Admin">Admin</option>
-                            <option value="User" selected>User</option>
+                            <option value="Admin">{{__('Admin')}}</option>
+                            <option value="User" selected>{{__('User')}}</option>
                         @endif
                     </select>
         
@@ -120,7 +120,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="display_picture_link" class="form-label">Display Picture</label>
+                <label for="display_picture_link" class="form-label">{{__('Display Picture')}}</label>
                 <input type="file" class="form-control form-control-sm" id="display_picture_link" name="display_picture_link">
 
                 @error('display_picture_link')
@@ -132,7 +132,7 @@
         </div>
     </div>
     <div class="container text-center">
-        <button type="submit" class="btn btn-primary mb-2">Save</button>
+        <button type="submit" class="btn btn-primary mb-2">{{__('Save')}}</button>
     </div>
 </form>
 

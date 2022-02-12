@@ -15,7 +15,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Title</th>
+                <th scope="col">{{__('Title')}}</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -36,7 +36,7 @@
                 @endforeach
             @else
                 <tr>
-                    <td>You have nothing in your cart</td>
+                    <td>{{__('You have nothing in your cart')}}</td>
                 </tr>
             @endif
         </tbody>
