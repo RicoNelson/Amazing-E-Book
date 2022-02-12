@@ -1,7 +1,7 @@
 ## Installation
 
 To open the web please do several steps:
-1. Start Apache and MySQL in XAMPP and create database on ```localhost/phpmyadmin``` called ```amazing_ebook```
+1. Start Apache and MySQL in XAMPP and create database on ```localhost/phpmyadmin``` called ```amazing_e```
 2. Open vscode.
 3. Run ```php artisan storage:link```
 4. Run ```php artisan migrate:fresh --seed```
@@ -14,13 +14,13 @@ Note:<br>
 Account for admin
 - email: admin@admin.com
 - password: password
-<br>
+
 - email: admin2@admin.com
 - password: password
 
 Account for customer
 - email: user@user.com
 - password: password
-<br>
+
 - email: user2@user.com
 - password: password
