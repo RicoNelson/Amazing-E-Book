@@ -38,7 +38,7 @@ Route::post('/logout', [HomeController::class, 'logout'])->middleware('auth');
 Route::get('/book-page/{book_id}', [EbookController::class, 'show'])->middleware('auth');
 Route::post('/add-book-to-order/{book_id}', [EbookController::class, 'add_book_to_order'])->middleware('auth');
 
-Route::get('/cart', [CartController::class, 'show'])->middleware('auth')->middleware('auth');
+Route::get('/cart', [CartController::class, 'show'])->middleware('auth');
 Route::post('/delete_book', [CartController::class, 'delete']);
 
 Route::post('/submit-all-cart', [CartController::class, 'destroy']);

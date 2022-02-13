@@ -48,13 +48,13 @@ class HomeController extends Controller
             'email' => 'required|email:dns',
             'role_id' => 'required|in:Admin,User',
             'password' => ['required', Password::min(8)->numbers()],
-            'display_picture_link' => 'required'
+            'display_picture_link' => 'required|image'
         ]);
         
 
         if($request->hasFile('image')){
             $request->validate([
-                'display_picture_link' => 'required|image|file'
+                'display_picture_link' => 'required|image'
             ]);
         }
         
