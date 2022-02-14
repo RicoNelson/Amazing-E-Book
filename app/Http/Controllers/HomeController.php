@@ -113,7 +113,10 @@ class HomeController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return view('/success',[
+            'title' => 'Amazing E-Book',
+            'message' => 'Log Out Success!!'
+        ]);
     }
 
     /**
